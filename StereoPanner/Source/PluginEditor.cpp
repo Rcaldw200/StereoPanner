@@ -90,11 +90,16 @@ void StereoPannerAudioProcessorEditor::sliderValueChanged (Slider* sliderThatWas
 {
     //[UsersliderValueChanged_Pre]
     //[/UsersliderValueChanged_Pre]
+    
+    
 
     if (sliderThatWasMoved == sliderPanPosition)
     {
         //[UserSliderCode_sliderPanPosition] -- add your slider handling code here..
+        processor.panPosition = sliderPanPosition->getValue();
         //[/UserSliderCode_sliderPanPosition]
+        
+        
     }
 
     //[UsersliderValueChanged_Post]
