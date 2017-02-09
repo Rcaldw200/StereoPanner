@@ -33,11 +33,11 @@ StereoPannerAudioProcessorEditor::StereoPannerAudioProcessorEditor (StereoPanner
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    addAndMakeVisible (slider = new Slider ("new slider"));
-    slider->setRange (0, 10, 0);
-    slider->setSliderStyle (Slider::LinearHorizontal);
-    slider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
-    slider->addListener (this);
+    addAndMakeVisible (sliderPanPosition = new Slider ("new slider"));
+    sliderPanPosition->setRange (-1, 1, 0);
+    sliderPanPosition->setSliderStyle (Slider::Rotary);
+    sliderPanPosition->setTextBoxStyle (Slider::TextBoxBelow, false, 80, 20);
+    sliderPanPosition->addListener (this);
 
 
     //[UserPreSize]
@@ -57,7 +57,7 @@ StereoPannerAudioProcessorEditor::~StereoPannerAudioProcessorEditor()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    slider = nullptr;
+    sliderPanPosition = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -81,7 +81,7 @@ void StereoPannerAudioProcessorEditor::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    slider->setBounds (105, 288, 150, 24);
+    sliderPanPosition->setBounds (16, 32, 224, 112);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -91,10 +91,10 @@ void StereoPannerAudioProcessorEditor::sliderValueChanged (Slider* sliderThatWas
     //[UsersliderValueChanged_Pre]
     //[/UsersliderValueChanged_Pre]
 
-    if (sliderThatWasMoved == slider)
+    if (sliderThatWasMoved == sliderPanPosition)
     {
-        //[UserSliderCode_slider] -- add your slider handling code here..
-        //[/UserSliderCode_slider]
+        //[UserSliderCode_sliderPanPosition] -- add your slider handling code here..
+        //[/UserSliderCode_sliderPanPosition]
     }
 
     //[UsersliderValueChanged_Post]
@@ -126,9 +126,9 @@ BEGIN_JUCER_METADATA
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="600" initialHeight="400">
   <BACKGROUND backgroundColour="ffffffff"/>
-  <SLIDER name="new slider" id="b26d015c52aa69e6" memberName="slider" virtualName=""
-          explicitFocusOrder="0" pos="105 288 150 24" min="0" max="10"
-          int="0" style="LinearHorizontal" textBoxPos="TextBoxLeft" textBoxEditable="1"
+  <SLIDER name="new slider" id="b26d015c52aa69e6" memberName="sliderPanPosition"
+          virtualName="" explicitFocusOrder="0" pos="16 32 224 112" min="-1"
+          max="1" int="0" style="Rotary" textBoxPos="TextBoxBelow" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1" needsCallback="1"/>
 </JUCER_COMPONENT>
 
