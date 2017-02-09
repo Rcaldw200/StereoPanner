@@ -33,6 +33,12 @@ StereoPannerAudioProcessorEditor::StereoPannerAudioProcessorEditor (StereoPanner
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
+    addAndMakeVisible (slider = new Slider ("new slider"));
+    slider->setRange (0, 10, 0);
+    slider->setSliderStyle (Slider::LinearHorizontal);
+    slider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+    slider->addListener (this);
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -41,7 +47,7 @@ StereoPannerAudioProcessorEditor::StereoPannerAudioProcessorEditor (StereoPanner
 
 
     //[Constructor] You can add your own custom stuff here..
-    
+
     startTimer(200);//starts timer with interval of 200mS
     //[/Constructor]
 }
@@ -51,6 +57,7 @@ StereoPannerAudioProcessorEditor::~StereoPannerAudioProcessorEditor()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
+    slider = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -74,8 +81,24 @@ void StereoPannerAudioProcessorEditor::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
+    slider->setBounds (105, 288, 150, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
+}
+
+void StereoPannerAudioProcessorEditor::sliderValueChanged (Slider* sliderThatWasMoved)
+{
+    //[UsersliderValueChanged_Pre]
+    //[/UsersliderValueChanged_Pre]
+
+    if (sliderThatWasMoved == slider)
+    {
+        //[UserSliderCode_slider] -- add your slider handling code here..
+        //[/UserSliderCode_slider]
+    }
+
+    //[UsersliderValueChanged_Post]
+    //[/UsersliderValueChanged_Post]
 }
 
 
@@ -103,6 +126,10 @@ BEGIN_JUCER_METADATA
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="600" initialHeight="400">
   <BACKGROUND backgroundColour="ffffffff"/>
+  <SLIDER name="new slider" id="b26d015c52aa69e6" memberName="slider" virtualName=""
+          explicitFocusOrder="0" pos="105 288 150 24" min="0" max="10"
+          int="0" style="LinearHorizontal" textBoxPos="TextBoxLeft" textBoxEditable="1"
+          textBoxWidth="80" textBoxHeight="20" skewFactor="1" needsCallback="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
